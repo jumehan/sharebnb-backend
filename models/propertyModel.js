@@ -16,7 +16,7 @@ const {
 class Property {
 
   /** Create Property
-   * given property data { title, address, description ,price }
+   * given property data { title, address, description , price }
    *
    * return {id, title, address, description ,price, owner_username }
    */
@@ -123,7 +123,8 @@ class Property {
 
   /** Given a property id, return data about property.
  *
- * Returns {id, title, address, description ,price, owner_username }
+ * Returns {id, title, address, description ,price, owner_username, images }
+ * where images is [{key, property_id}, ...]
  *
  * Throws NotFoundError if not found.
  **/
@@ -136,14 +137,22 @@ class Property {
               description,
               price,
               owner_username AS "ownerUsername"
-             FROM properties
-             WHERE id = $1`,
+            FROM properties
+            WHERE id = $1`,
       [id]);
 
     const property = propertyRes.rows[0];
 
     if (!property) throw new NotFoundError(`No property: ${id}`);
 
+    const imagesRes = await db.query(
+      `SELECT id, property_id
+          FROM images
+          WHERE property_id = $1
+          ORDER BY key`,
+      [id]);
+
+    property.images = imagesRes.rows;
 
     return property;
   }
