@@ -1,15 +1,15 @@
 "use strict";
 
 const db = require("../db");
-const bcrypt = require("bcrypt");
-// const { sqlForPartialUpdate } = require("../helpers/sql");
+
+
 const {
   NotFoundError,
   BadRequestError,
-  UnauthorizedError,
+
 } = require("../expressError");
 
-const { BCRYPT_WORK_FACTOR } = require("../config.js");
+
 
 /** Related functions for Properties */
 
@@ -152,14 +152,3 @@ class Property {
 }
 module.exports = Property;
 
-
-
-// CREATE TABLE properties (
-//   id SERIAL PRIMARY KEY,
-//   title VARCHAR(25) NOT NULL,
-//   address VARCHAR(255) NOT NULL,
-//   description TEXT NOT NULL,
-//   price INTEGER NOT NULL,
-//   owner_username VARCHAR(25) NOT NULL
-//        REFERENCES users ON DELETE CASCADE
-// );

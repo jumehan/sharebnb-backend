@@ -9,6 +9,8 @@ app.use(cors());
 
 
 app.post('/upload', uploadImg.array('photos', 3), function (req, res, next) {
+
+  const images = await Image.create([filesnames]);
   res.send('Successfully uploaded ' + req.files.length + ' files!');
 });
 

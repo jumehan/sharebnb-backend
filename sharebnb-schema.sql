@@ -42,8 +42,8 @@ CREATE TABLE messages (
 
 
 CREATE TABLE images (
-  id SERIAL PRIMARY KEY,
-  key VARCHAR(20) NOT NULL,
+
+  key VARCHAR(40) NOT NULL PRIMARY KEY,
   property_id INT NOT NULL
     REFERENCES properties ON DELETE CASCADE
 
