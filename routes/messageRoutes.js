@@ -3,7 +3,6 @@
 const Router = require("express").Router;
 const router = new Router();
 
-const User = require("../models/userModel");
 const Message = require("../models/messageModel");
 
 const { UnauthorizedError, BadRequestError } = require("../expressError");

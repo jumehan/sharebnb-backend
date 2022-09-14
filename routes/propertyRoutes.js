@@ -12,6 +12,8 @@ const Property = require("../models/propertyModel");
 const propertyNewSchema = require("../schemas/propertyNew.json");
 const propertySearchSchema = require("../schemas/propertySearch.json");
 
+const { uploadImg, getUrlFromBucket } = require('../helpers/s3');
+
 const router = new express.Router();
 
 
@@ -80,7 +82,17 @@ router.get("/", async function (req, res, next) {
  */
 
 router.get("/:id", async function (req, res, next) {
-  const property = await Property.get(req.params.handle);
+  const property = await Property.get(req.params.id);
+  return res.json({ property });
+});
+
+router.post('/:id/images', uploadImg.array('photos', 3), async function (req, res, next) {
+  const id = req.params.id;
+  const key = req.files[0].key
+  const imgUrl = getUrlFromBucket(key);
+
+  await Image.create(imgUrl, id);
+  const property = await Property.get(id);
   return res.json({ property });
 });
 
