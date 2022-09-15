@@ -15,7 +15,7 @@ class Image {
    */
   static async create({ key, propertyId }) {
     const result = await db.query(`
-    INSERT INTO images (key, propertyId)
+    INSERT INTO images (key, property_id)
         VALUES ($1, $2)
         RETURNING key, property_id AS "propertyId"`,
       [key, propertyId]);
@@ -25,4 +25,4 @@ class Image {
   }
 }
 
-module.exports = Images;
+module.exports = Image;

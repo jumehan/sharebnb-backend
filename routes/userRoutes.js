@@ -62,23 +62,4 @@ router.get("/:username/from",
   });
 
 
-/** POST /[username]/bookings/[id]  { state } => { application }
- *
- * Returns {"booked": propertyId}
- *
- * Authorization required: same-user-as-:username
- * */
-
-// router.post("/:username/bookings/:id", ensureCorrectUser, async function (
-//   req, res, next) {
-//   try {
-//     const propertyId = +req.params.id;
-//     await User.makeBooking(req.params.username, propertyId);
-//     return res.json({ booked: propertyId });
-//   } catch (err) {
-//     return next(err);
-//   }
-// });
-
-
 module.exports = router;

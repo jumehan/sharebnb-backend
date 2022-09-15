@@ -146,7 +146,7 @@ class Property {
     if (!property) throw new NotFoundError(`No property: ${id}`);
 
     const imagesRes = await db.query(
-      `SELECT id, property_id
+      `SELECT key, property_id
           FROM images
           WHERE property_id = $1
           ORDER BY key`,
