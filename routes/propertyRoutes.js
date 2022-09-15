@@ -19,7 +19,7 @@ const { uploadImg, getUrlFromBucket } = require('../helpers/s3');
 const router = new express.Router();
 
 
-/** POST / { property } =>  { property }
+/** POST Create Property / { property } =>  { property }
  *
  * property should be { title, address, description ,price }
  *
@@ -29,17 +29,21 @@ const router = new express.Router();
  */
 
 router.post("/", ensureLoggedIn, async function (req, res, next) {
+
+  const newReqBody = { ...req.body, price: +req.body.price };
   const validator = jsonschema.validate(
-    req.body,
+    newReqBody,
     propertyNewSchema,
     { required: true }
   );
+
+
   if (!validator.valid) {
     const errs = validator.errors.map(e => e.stack);
     throw new BadRequestError(errs);
   }
 
-  const data = { ...req.body, ownerUsername: res.locals.user.username };
+  const data = { ...newReqBody, ownerUsername: res.locals.user.username };
 
   const property = await Property.create(data);
   return res.status(201).json({ property });
@@ -90,9 +94,16 @@ router.get("/:id", async function (req, res, next) {
   return res.json({ property });
 });
 
-router.post('/:id/images', uploadImg.array('photos', 3),
+
+
+/** POST {fileData, id: property.id}
+ * - returns  Property: { id, title, address, description ,price, owner_username, images }
+ *  where images is [{key, property_id}, ...]
+*/
+
+router.post('/images', uploadImg.array('photos', 3),
   async function (req, res, next) {
-    const id = req.params.id;
+    const id = req.body.id;
     const key = req.files[0].key;
     const imgUrl = getUrlFromBucket(key);
 
