@@ -12,7 +12,7 @@ CREATE TABLE users (
 
 CREATE TABLE properties (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(25) NOT NULL,
+    title VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     price INTEGER NOT NULL,

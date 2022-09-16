@@ -106,20 +106,34 @@ class Property {
     });
 
     const propertiesRes = await db.query(`
-        SELECT id,
-               title,
-               address,
-               description,
-               price,
-               owner_username AS "ownerUsername"
-
-          FROM properties ${where}
-          ORDER BY title
+        SELECT p.id,
+               p.title,
+               p.address,
+               p.description,
+               p.price,
+               p.owner_username AS "ownerUsername",
+               i.key
+          FROM properties AS p
+          FULL JOIN images AS i ON i.property_id = p.id
+          ${where}
       `, vals);
 
 
     return propertiesRes.rows;
   }
+
+  //   SELECT p.id,
+  //   p.title,
+  //   p.address,
+  //   p.description,
+  //   p.price,
+  //   p.owner_username AS "ownerUsername",
+  //   i.key
+  // JOIN images AS i ON i.property_id = p.id
+  // FROM properties AS p
+  // ${where}
+  // ORDER BY p.title
+  // `, vals);
 
   /** Given a property id, return data about property.
  *

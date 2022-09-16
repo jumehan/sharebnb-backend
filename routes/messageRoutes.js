@@ -40,11 +40,11 @@ router.get("/:id", async function (req, res, next) {
  *
  **/
 router.post("/", async function (req, res, next) {
-  const from_username = res.locals.user.username;
-  const { to_username, body } = req.body;
+  const fromUsername = res.locals.user.username;
+  const { toUsername, body } = req.body;
   const message = await Message.create({
-    from_username,
-    to_username,
+    fromUsername,
+    toUsername,
     body,
   });
 
