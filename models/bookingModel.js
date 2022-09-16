@@ -23,7 +23,7 @@ class Booking {
                           OR ($2 between start_date and end_date)
                           OR ($3 between start_date and end_date);
                       `, [propertyId, startDate, endDate]);
-    console.log('validatebooking', validateBooking.rows);
+
 
     if (validateBooking.rows.length) {
       throw new BadRequestError(`Sorry, this property is already
