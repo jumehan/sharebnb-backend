@@ -51,7 +51,7 @@ router.post("/", ensureLoggedIn, async function (req, res, next) {
 
 /** GET /  =>
  *   { properties: [
- *     {id, title, address, description ,price, owner_username }, ...] }
+ *     {id, title, address, description ,price, ownerUsername, key }, ...] }
  *
  * Can filter on provided search filters:
  * - minPrice

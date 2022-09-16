@@ -91,9 +91,12 @@ class Property {
  * - maxPrice
  *
  * Returns array-
- *     [{ id, title, address, description ,price, owner_username }, ...]
+ *     [{ id, title, address, description ,price, ownerUsername, key}, ...]
+ * where key is the s3 image url
  * */
 
+  // BUG: We're only returning one image here, so if there are multiple images
+  // the Property shows up as many times as there are images
   static async findAll(searchFilters = {}) {
     const { minPrice, maxPrice, description } = searchFilters;
 
@@ -134,6 +137,8 @@ class Property {
   // ${where}
   // ORDER BY p.title
   // `, vals);
+
+
 
   /** Given a property id, return data about property.
  *
