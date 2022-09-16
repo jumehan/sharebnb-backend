@@ -14,18 +14,22 @@ class Booking {
    * with property as {id, title, address, description, price, ownerUsername}
    */
   static async create({ startDate, endDate, propertyId, guestUsername }) {
-    // const validateBooking = await db.query(`
-    //   SELECT property_id
-    //     FROM bookings
-    //     WHERE property_id = $3
-    //           AND ($1 >= start_date AND $1 <= end_date)
-    //           OR ($2 <= end_date AND $2 >= start_date)`,
-    //   [startDate, endDate, propertyId]);
+    const validateBooking = await db.query(`
+                          SELECT id, start_date, end_date
+                          FROM bookings
+                          WHERE property_id = $1
+                          AND (start_date  between $2 and $3)
+                          OR (end_date  between $2 and $3)
+                          OR ($2 between start_date and end_date)
+                          OR ($3 between start_date and end_date);
+                      `, [propertyId, startDate, endDate]);
+    console.log('validatebooking', validateBooking.rows);
 
-    // if (validateBooking.length) {
-    //   throw new BadRequestError(`Sorry, this property is already
-    //                             booked for those dates`);
-    // }
+    if (validateBooking.rows.length) {
+      throw new BadRequestError(`Sorry, this property is already
+                                booked from${validateBooking.rows[0].start_date}
+                                to ${validateBooking.rows[0].end_date}`);
+    }
 
     const bookingRes = await db.query(`
       INSERT INTO bookings (start_date, end_date, property_id, guest_username)
@@ -56,3 +60,19 @@ class Booking {
 }
 
 module.exports = Booking;
+
+
+// select id, start_date, end_date from bookings where property_id = 2;
+// and('2022-09-10' between start_date and end_date) or(
+//   '2022-09-20' between start_date and end_date);
+
+
+//   select id from bookings where property_id = 2 and(start_date  between '2022-09-10' and '2022-09-25') or(end_date  between '2022-09-10' and '2022-09-25')
+
+
+//   select id from bookings where property_id = 2 and(start_date  between '2022-09-17' and '2022-09-18') or(end_date  between '2022-09-17' and '2022-09-18');
+
+
+
+//   select id from bookings where property_id = 2 and(start_date  between '2022-09-17' and '2022-09-18') or(end_date  between '2022-09-17' and '2022-09-18') or('2022-09-17' between start_date and end_date) or(
+//     '2022-09-18' between start_date and end_date);
