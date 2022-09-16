@@ -95,7 +95,7 @@ class Property {
  * where key is the s3 image url
  * */
 
-  // BUG: We're only returning one image here, so if there are multiple images
+  // TODO: We're only returning one image here, so if there are multiple images
   // the Property shows up as many times as there are images
   static async findAll(searchFilters = {}) {
     const { minPrice, maxPrice, description } = searchFilters;
