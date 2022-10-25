@@ -8,7 +8,8 @@
 --------------------------------------------------------
 ## sharebnb backend:
 * [react front-end](https://github.com/jumehan/sharebnb-frontend)
-* [demo](https://github.com/jumehan/sharebnb-frontend)
+* [demo](https://r27-sharebnb-jmh.herokuapp.com)
+* [backend live](https://r27-sharebnb-jmh.herokuapp.com)
 
 ## technologies:
 * AWS S3 bucket
