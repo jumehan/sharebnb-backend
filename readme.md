@@ -1,13 +1,14 @@
 #  🏡 sharebnb
 #### fullstack api that lets users share spaces
 >  👩🏻‍💻 built during a choose your own adventure 3-day long sprint with full freedom re: tech stack to use
-* users can register,
+* users can register
 * users can list spaces, book spaces
 * users can message each other to ask questions
 * listing search function
 --------------------------------------------------------
 ## sharebnb backend:
 * [react front-end](https://github.com/jumehan/sharebnb-frontend)
+* [demo](https://github.com/jumehan/sharebnb-frontend)
 
 ## technologies:
 * AWS S3 bucket

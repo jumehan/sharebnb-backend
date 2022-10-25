@@ -1,20 +1,30 @@
 "use strict";
 
-const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
-const {
-  BUCKET_NAME,
-  ACCESS_KEY_ID,
-  SECRET_ACCESS_KEY,
-  REGION,
-} = require('../config');
+const AWS = require('aws-sdk');
+
+const s3Client  = new AWS.S3({
+  accessKeyId: process.env.BUCKETEER_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.BUCKETEER_AWS_SECRET_ACCESS_KEY,
+  region: 'us-east-1',
+});
+
+const BUCKET_NAME = process.env.BUCKETEER_BUCKET_NAME
+
+// const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
+// const {
+//   BUCKET_NAME,
+//   ACCESS_KEY_ID,
+//   SECRET_ACCESS_KEY,
+//   REGION,
+// } = require('../config');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 
-const s3Client = new S3Client({
-  region: REGION,
-  accessKeyId: ACCESS_KEY_ID,
-  secretAccessKey: SECRET_ACCESS_KEY,
-});
+// const s3Client = new S3Client({
+//   region: REGION,
+//   accessKeyId: ACCESS_KEY_ID,
+//   secretAccessKey: SECRET_ACCESS_KEY,
+// });
 
 /** multer upload function */
 const uploadImg = multer({
