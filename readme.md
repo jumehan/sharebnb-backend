@@ -12,8 +12,8 @@
 ## technologies:
 * AWS S3 bucket
 * json schema validation
-* SQL
-* NodeJS Express Database
+* SQL, postgres database
+* NodeJS Express javascript backend
 --------------------------------------------------------
 ## todos:
 ### test models:
