@@ -8,13 +8,13 @@
 --------------------------------------------------------
 ## sharebnb backend:
 * [react front-end](https://github.com/jumehan/sharebnb-frontend)
---------------------------------------------------------
+
 ## technologies:
 * AWS S3 bucket
 * json schema validation
 * SQL, postgres database
 * NodeJS Express javascript backend
---------------------------------------------------------
+
 ## todos:
 ### test models:
 * add testing Message model
@@ -29,6 +29,6 @@
 * add testing properties routes
 * add testing messages routes
 * add testing auth routes
---------------------------------------------------------
-### future functionality:
+
+## future functionality:
 * add feature to allow for multiple images upload per property
