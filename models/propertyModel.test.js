@@ -21,7 +21,6 @@ beforeEach(commonBeforeEach);
 afterEach(commonAfterEach);
 afterAll(commonAfterAll);
 
-
 /************************************** create */
 
 describe("create", function () {
@@ -86,8 +85,6 @@ describe("findAll", function () {
       }
     ]);
   });
-
-
 
   test("works: by max price", async function () {
     let properties = await Property.findAll({ maxPrice: 200 });

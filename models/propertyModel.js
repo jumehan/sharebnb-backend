@@ -95,7 +95,7 @@ class Property {
  * where key is the s3 image url
  * */
 
-  // TODO: We're only returning one image here, so if there are multiple images
+  // TODO: we're only returning one image here, so if there are multiple images
   // the Property shows up as many times as there are images
   static async findAll(searchFilters = {}) {
     const { minPrice, maxPrice, description } = searchFilters;
@@ -124,21 +124,6 @@ class Property {
 
     return propertiesRes.rows;
   }
-
-  //   SELECT p.id,
-  //   p.title,
-  //   p.address,
-  //   p.description,
-  //   p.price,
-  //   p.owner_username AS "ownerUsername",
-  //   i.key
-  // JOIN images AS i ON i.property_id = p.id
-  // FROM properties AS p
-  // ${where}
-  // ORDER BY p.title
-  // `, vals);
-
-
 
   /** Given a property id, return data about property.
  *

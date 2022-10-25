@@ -62,17 +62,3 @@ class Booking {
 module.exports = Booking;
 
 
-// select id, start_date, end_date from bookings where property_id = 2;
-// and('2022-09-10' between start_date and end_date) or(
-//   '2022-09-20' between start_date and end_date);
-
-
-//   select id from bookings where property_id = 2 and(start_date  between '2022-09-10' and '2022-09-25') or(end_date  between '2022-09-10' and '2022-09-25')
-
-
-//   select id from bookings where property_id = 2 and(start_date  between '2022-09-17' and '2022-09-18') or(end_date  between '2022-09-17' and '2022-09-18');
-
-
-
-//   select id from bookings where property_id = 2 and(start_date  between '2022-09-17' and '2022-09-18') or(end_date  between '2022-09-17' and '2022-09-18') or('2022-09-17' between start_date and end_date) or(
-//     '2022-09-18' between start_date and end_date);

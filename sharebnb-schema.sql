@@ -42,7 +42,6 @@ CREATE TABLE messages (
 
 
 CREATE TABLE images (
-
   key VARCHAR(255) NOT NULL PRIMARY KEY,
   property_id INT NOT NULL
     REFERENCES properties ON DELETE CASCADE
