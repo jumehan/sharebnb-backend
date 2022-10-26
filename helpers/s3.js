@@ -1,8 +1,10 @@
 "use strict";
 
-const AWS = require('aws-sdk');
+// const AWS = require('aws-sdk');
 
-const s3Client  = new AWS.S3({
+const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
+
+const s3Client  = new S3Client({
   accessKeyId: process.env.BUCKETEER_AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.BUCKETEER_AWS_SECRET_ACCESS_KEY,
   region: 'us-east-1',
@@ -10,7 +12,6 @@ const s3Client  = new AWS.S3({
 
 const BUCKET_NAME = process.env.BUCKETEER_BUCKET_NAME
 
-// const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
 // const {
 //   BUCKET_NAME,
 //   ACCESS_KEY_ID,

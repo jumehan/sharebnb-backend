@@ -8,7 +8,7 @@
 --------------------------------------------------------
 ## sharebnb backend:
 * [react front-end](https://github.com/jumehan/sharebnb-frontend)
-* [demo](https://r27-sharebnb-jmh.herokuapp.com)
+* [demo](http://sharebnb-jmh.surge.sh)
 * [backend live](https://r27-sharebnb-jmh.herokuapp.com)
 
 ## technologies:
