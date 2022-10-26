@@ -10,7 +10,7 @@ const s3Client  = new S3Client({
   region: 'us-east-1',
 });
 
-const BUCKET_NAME = process.env.BUCKET_NAME
+const BUCKET_NAME = "r27-sharebnb"
 
 // const {
 //   BUCKET_NAME,
