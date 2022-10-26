@@ -2,15 +2,16 @@
 
 // const AWS = require('aws-sdk');
 
-const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
+const { S3Client } = require("@aws-sdk/client-s3");
 
-const s3Client  = new S3Client({
+const s3Client = new S3Client({
   accessKeyId: process.env.BUCKETEER_AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.BUCKETEER_AWS_SECRET_ACCESS_KEY,
-  region: 'us-east-1',
+  region: "us-east-1",
 });
 
-const BUCKET_NAME = process.env.BUCKETEER_BUCKET_NAME
+const BUCKET_NAME = process.env.BUCKETEER_BUCKET_NAME;
+const AWS_BUCKET_NAME = "r27-sharebnb";
 
 // const {
 //   BUCKET_NAME,
@@ -18,8 +19,8 @@ const BUCKET_NAME = process.env.BUCKETEER_BUCKET_NAME
 //   SECRET_ACCESS_KEY,
 //   REGION,
 // } = require('../config');
-const multer = require('multer');
-const multerS3 = require('multer-s3');
+const multer = require("multer");
+const multerS3 = require("multer-s3");
 
 // const s3Client = new S3Client({
 //   region: REGION,
@@ -37,10 +38,9 @@ const uploadImg = multer({
     },
     key: function (req, file, cb) {
       cb(null, Date.now().toString());
-    }
-  })
+    },
+  }),
 });
-
 
 // const getS3Img = async () => {
 //   const bucketParams = {
@@ -73,11 +73,11 @@ const uploadImg = multer({
  * returns a url string
  *
  * @example https://r27-sharebnb.s3.amazonaws.com/1663108593387
-*/
+ */
 
 function getUrlFromBucket(key) {
-  return `https://${BUCKET_NAME}.s3.amazonaws.com/${key}`;
-};
+  return `https://${AWS_BUCKET_NAME}.s3.amazonaws.com/${key}`;
+}
 
 module.exports = {
   uploadImg,
