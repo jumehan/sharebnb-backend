@@ -17,7 +17,10 @@
 * SQL, postgres database
 * NodeJS Express javascript backend
 
-## todos:
+## issues & todos:
+### urgent:
+* fix issue with AWS s3 bucket key image url not working in production
+
 ### test models:
 * add testing Message model
 * add testing Image model
